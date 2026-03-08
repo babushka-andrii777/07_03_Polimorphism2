@@ -3,11 +3,15 @@ namespace Pol2;
 class StandartGrading : IGradeStrategy
 {
     public string StrategyName {get;}
-    public int examScore{get; set;}
-    public List<int> asignments {get; set;}
-
-    public double CalculateFinalGrade()
+    public StandartGrading(string strategyNamme)
     {
-        return (asignments.Sum()/asignments.Count()*0.4) + examScore*0.6;
+        ArgumentException.ThrowIfNullOrEmpty(strategyNamme);
+        StrategyName = strategyNamme;
+    }
+    public double CalculateFinalGrade(string strategyNamme, int examScore, List<int> Asignments)
+    {
+        if (examScore < 0 || examScore  > 100)
+            throw new Exception($"Your examscore can`t be negative");
+        return (Asignments.Sum()/Asignments.Count()*0.4) + examScore*0.6;   
     }
 }

@@ -2,7 +2,7 @@
 
 interface IGradeStrategy
 {
-    string StrategyName {get;}
+    string StrategyName {get;} 
 
-    double CalculateFinalGrade(List<int> assignments, int examScore);   
+    double CalculateFinalGrade(string strategyNamme, int examScore, List<int> Asignments);   
 }
